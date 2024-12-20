@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import logImg from "../../assets/others/authentication2.png";
 import Swal from "sweetalert2";
-import "./Login.css"
+import "./Login.css";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -11,6 +11,7 @@ import {
 import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import SocialLogin from "../../components/SectionTitle/SocialLogin/SocialLogin";
 
 const Login = () => {
   const [disable, setDisable] = useState(true);
@@ -64,13 +65,13 @@ const Login = () => {
       <Helmet>
         <title>Bistro Boss | Log in</title>
       </Helmet>
-      <div className="hero max-w-full max-h-screen logInImg">
+      <div className="hero max-w-full  logInImg">
         <div className="hero-content w-full  lg:flex-row ">
           <div className="md:w-1/2 ">
             <img src={logImg} alt="" />
           </div>
           <div className="card text-center w-full md:w-1/2 shadow-2xl flex-col">
-          <h2 className="font-extrabold text-black">Login</h2>
+            <h2 className="font-extrabold text-black">Login</h2>
             <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -131,7 +132,10 @@ const Login = () => {
                   Create a New Account
                 </Link>
               </h3>
+              
             </div>
+            <p>Or Sign In with</p>
+              <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>

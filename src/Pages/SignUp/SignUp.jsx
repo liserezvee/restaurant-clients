@@ -5,12 +5,13 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import signUpImg from "../../assets/others/authentication2.png";
 import Swal from "sweetalert2";
-import "./SignUp.css"
+import "./SignUp.css";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const SignUp = () => {
+  const axiosPublic = useAxiosPublic();
   const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
-  const location = useLocation();
   const {
     register,
     handleSubmit,
@@ -26,15 +27,25 @@ const SignUp = () => {
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
           console.log("user profile info updated");
-          reset();
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "user created successfully",
-            showConfirmButton: false,
-            timer: 1500,
+          //create user entry in the database
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log("user added to db");
+              reset();
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "user created successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            }
           });
-          navigate("/");
         })
         .catch((error) => console.log(error));
     });
@@ -115,7 +126,6 @@ const SignUp = () => {
                   one special character
                 </span>pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])$/
               )} */}
-               
               </div>
               <div className="form-control mt-6">
                 <input
