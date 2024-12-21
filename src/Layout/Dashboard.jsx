@@ -1,5 +1,4 @@
 import {
-  FaAd,
   FaAddressCard,
   FaCalendar,
   FaHome,
@@ -16,12 +15,14 @@ import {
 } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const [cart] = useCart();
 
   //TODO: get isAdmin value from db
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
+ //const isAdmin = true
   return (
     <div className="flex ">
       {/**dashboard sidebar */}
