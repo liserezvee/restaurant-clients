@@ -79,16 +79,16 @@ const NavBar = () => {
           <div className="mr-5">
             {user ? (
               <>
-                <button onClick={handleLogOut} className="btn btn-ghost">
+                <button onClick={handleLogOut} className="btn btn-ghost  text-black font-bold">
                   <p>
-                    <span className="uppercase">{user?.displayName} </span>
+                    <span className="uppercase text-black font-bold">{user?.displayName} </span>
                   </p>
                   Log Out
                 </button>
               </>
             ) : (
               <>
-                <button className="font-bold">
+                <button className="font-bold  text-black font-bold">
                   <Link to="/login">Login</Link>
                 </button>
               </>

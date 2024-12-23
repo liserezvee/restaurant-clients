@@ -1,0 +1,6 @@
+/** 
+* dont show the link to those user who should not see the link
+* even if they gets the link , do not allow to visit the link 
+* do not allow user to access the api . chk admin in the  server as wll
+*(verifyAdmin)
+*/
