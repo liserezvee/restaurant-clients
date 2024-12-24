@@ -4,6 +4,7 @@ import { MdOutlineDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
@@ -44,7 +45,16 @@ const Cart = () => {
       <div className="flex justify-evenly">
         <h3 className="text-4xl text-black">Items: {cart.length}</h3>
         <h3 className="text-4xl text-black">Total Price: {totalFixedPrice}</h3>
-        <button className="btn btn-primary bg-orange-400">pay</button>
+        {cart.length ? (
+          <Link to="/dashboard/payment">
+            {" "}
+            <button className="btn btn-primary bg-orange-400">pay</button>
+          </Link>
+        ) : (
+          <button disabled className="btn btn-primary bg-orange-400">
+            pay
+          </button>
+        )}
       </div>
       <div className="overflow-x-auto">
         <table className="table">

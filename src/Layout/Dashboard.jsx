@@ -22,7 +22,7 @@ const Dashboard = () => {
 
   //TODO: get isAdmin value from db
   const [isAdmin] = useAdmin();
- //const isAdmin = true
+  //const isAdmin = true
   return (
     <div className="flex ">
       {/**dashboard sidebar */}
@@ -52,10 +52,24 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
+                <NavLink to="/dashboard/cart">
+                  {" "}
+                  <FaShoppingCart />
+                  My Cart ({cart.length}){" "}
+                </NavLink>
+              </li>
+              <li>
                 <NavLink to="/dashboard/manageBookings">
                   {" "}
                   <FaBook />
                   Manage Bookings
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/paymentHistory">
+                  {" "}
+                  <FaList />
+                  My Payment History{" "}
                 </NavLink>
               </li>
               <li>
@@ -76,17 +90,17 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/reservation">
+                <NavLink to="/dashboard/paymentHistory">
                   {" "}
                   <FaCalendar />
                   My Reservation
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/payment">
+                <NavLink to="/dashboard/bookings">
                   {" "}
                   <MdOutlinePayments />
-                  My Payment{" "}
+                  My Bookings{" "}
                 </NavLink>
               </li>
               <li>
@@ -104,10 +118,10 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/booking">
+                <NavLink to="/dashboard/paymentHistory">
                   {" "}
-                  <FaBook />
-                  My Booking{" "}
+                  <FaList />
+                  My Payment History{" "}
                 </NavLink>
               </li>
             </>
